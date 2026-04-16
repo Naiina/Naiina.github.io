@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nina Gregorio</title>
+  <meta name="author" content="Nina Gregorio" />
+  <meta name="description" content="Nina Gregorio — PhD Researcher in NLP and Psycholinguistics at the University of Edinburgh. Research on cognitive constraints shaping syntactic structures cross-linguistically." />
+  <meta name="keywords" content="Nina Gregorio, NLP, psycholinguistics, computational linguistics, syntax, animacy, University of Edinburgh, ACL" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --burgundy: #73113a;
+      --burgundy-light: #f7eaef;
+      --burgundy-mid: #b5547a;
+      --dark: #1a0a10;
+      --mid: #5a3545;
+      --light: #f9f4f6;
+      --white: #ffffff;
+      --border: rgba(115, 17, 58, 0.15);
+      --text: #2c1520;
+      --text-muted: #6b4555;
+      --serif: 'EB Garamond', Georgia, serif;
+      --sans: 'DM Sans', system-ui, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--light);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(249, 244, 246, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 0.5px solid var(--border);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 52px;
+    }
+
+    .nav-name {
+      font-family: var(--serif);
+      font-size: 17px;
+      color: var(--burgundy);
+      letter-spacing: 0.01em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.8rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--text-muted);
+      text-decoration: none;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--burgundy); }
+
+    /* LAYOUT */
+    .container {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    section { padding: 4rem 0; }
+    section + section { border-top: 0.5px solid var(--border); }
+
+    /* HERO */
+    .hero {
+      padding: 5rem 0 4rem;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .hero-tag {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--burgundy);
+      margin-bottom: 1rem;
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards;
+    }
+
+    .hero-name {
+      font-family: var(--serif);
+      font-size: clamp(2.4rem, 5vw, 3.4rem);
+      font-weight: 400;
+      line-height: 1.1;
+      color: var(--dark);
+      margin-bottom: 0.5rem;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.1s forwards;
+    }
+
+    .hero-role {
+      font-size: 15px;
+      color: var(--text-muted);
+      margin-bottom: 1.6rem;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.2s forwards;
+    }
+
+    .hero-bio {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.75;
+      max-width: 520px;
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.3s forwards;
+    }
+
+    .hero-links {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.4s forwards;
+    }
+
+    .btn {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 7px 18px;
+      border-radius: 2px;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: var(--burgundy);
+      color: var(--white);
+      border: 1px solid var(--burgundy);
+    }
+
+    .btn-primary:hover { background: var(--dark); border-color: var(--dark); }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--burgundy);
+      border: 1px solid var(--burgundy);
+    }
+
+    .btn-ghost:hover { background: var(--burgundy-light); }
+
+    /* AVATAR */
+    .avatar-wrap {
+      opacity: 0;
+      animation: fadeIn 0.8s ease 0.2s forwards;
+    }
+
+    .avatar {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background: var(--burgundy);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--serif);
+      font-size: 42px;
+      color: var(--white);
+      overflow: hidden;
+      border: 3px solid var(--white);
+      box-shadow: 0 0 0 1px var(--border);
+    }
+
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* SECTION HEADINGS */
+    .section-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--burgundy);
+      margin-bottom: 2rem;
+    }
+
+    /* RESEARCH CARD */
+    .research-card {
+      border: 0.5px solid var(--border);
+      border-left: 3px solid var(--burgundy);
+      padding: 1.5rem 1.75rem;
+      background: var(--white);
+      border-radius: 0 4px 4px 0;
+      margin-bottom: 1.5rem;
+    }
+
+    .research-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.4rem;
+    }
+
+    .research-institution {
+      font-family: var(--serif);
+      font-size: 19px;
+      font-weight: 400;
+      color: var(--dark);
+    }
+
+    .research-period {
+      font-size: 12px;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .research-degree {
+      font-size: 14px;
+      color: var(--burgundy);
+      font-weight: 500;
+      margin-bottom: 0.6rem;
+    }
+
+    .supervisors {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 0.8rem;
+      border-bottom: 0.5px solid var(--border);
+      padding-bottom: 0.8rem;
+    }
+
+    .supervisors span { text-decoration: underline; }
+
+    .research-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+    .research-list {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .research-list li {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      line-height: 1.65;
+      padding-left: 1.2rem;
+      position: relative;
+    }
+
+    .research-list li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--burgundy-mid);
+      font-size: 11px;
+      top: 4px;
+    }
+
+    /* PUBLICATIONS */
+    .pub-list { list-style: none; padding: 0; }
+
+    .pub-item {
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      gap: 12px;
+      padding: 1.2rem 0;
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .pub-num {
+      font-family: var(--serif);
+      font-size: 15px;
+      color: var(--burgundy-mid);
+      padding-top: 1px;
+    }
+
+    .pub-text {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    .pub-text strong { color: var(--text); font-weight: 500; }
+    .pub-text em { font-style: italic; }
+
+    .badge {
+      display: inline-block;
+      font-size: 10.5px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: var(--burgundy);
+      background: var(--burgundy-light);
+      border: 0.5px solid var(--burgundy-mid);
+      border-radius: 2px;
+      padding: 2px 8px;
+      margin-left: 6px;
+      vertical-align: middle;
+      white-space: nowrap;
+    }
+
+    .status-tag {
+      display: inline-block;
+      font-size: 11px;
+      color: var(--text-muted);
+      border: 0.5px solid var(--border);
+      border-radius: 2px;
+      padding: 1px 7px;
+      margin-left: 4px;
+      vertical-align: middle;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 2.5rem 0;
+      font-size: 12px;
+      color: var(--text-muted);
+      border-top: 0.5px solid var(--border);
+      letter-spacing: 0.03em;
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 600px) {
+      .hero { grid-template-columns: 1fr; }
+      .avatar-wrap { order: -1; }
+      .avatar { width: 90px; height: 90px; font-size: 28px; }
+      nav { padding: 0 1rem; }
+      .nav-links { gap: 1rem; }
+      .container { padding: 0 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <span class="nav-name">Nina Gregorio</span>
+    <ul class="nav-links">
+      <li><a href="#research">Research</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="mailto:your@email.ac.uk">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+
+    <!-- HERO -->
+    <div class="hero">
+      <div>
+        <p class="hero-tag">PhD Researcher · Edinburgh</p>
+        <h1 class="hero-name">Nina Gregorio</h1>
+        <p class="hero-role">NLP &amp; Psycholinguistics · University of Edinburgh</p>
+        <p class="hero-bio">
+          I study how cognitive constraints shape syntactic structures across languages,
+          combining psycholinguistic theory with large-scale NLP methods to extend
+          linguistic findings to typologically diverse languages and larger corpora.
+        </p>
+        <div class="hero-links">
+          <a class="btn btn-primary" href="mailto:your@email.ac.uk">Email</a>
+          <a class="btn btn-ghost" href="https://scholar.google.com" target="_blank" rel="noopener">Google Scholar</a>
+          <a class="btn btn-ghost" href="https://github.com/yourusername" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn btn-ghost" href="cv.pdf" target="_blank" rel="noopener">CV</a>
+        </div>
+      </div>
+      <div class="avatar-wrap">
+        <!-- Replace the initials below with: <img src="photo.jpg" alt="Nina Gregorio" /> -->
+        <div class="avatar">NG</div>
+      </div>
+    </div>
+
+    <!-- RESEARCH -->
+    <section id="research">
+      <p class="section-label">Research</p>
+      <div class="research-card">
+        <div class="research-header">
+          <div class="research-institution">University of Edinburgh</div>
+          <div class="research-period">Sept 2023 – ongoing · Edinburgh</div>
+        </div>
+        <div class="research-degree">PhD · NLP and Psycholinguistics: Cognitive constraints shaping syntactic structures cross-linguistically</div>
+        <div class="supervisors"><span>Supervisors</span>: Edoardo Ponti, Sharon Goldwater</div>
+        <p class="research-desc">
+          Investigating fine-grained interactions between semantics, vision and syntax in a
+          quantitative way, using AI to create, modify, and annotate large cross-linguistic corpora.
+        </p>
+        <ul class="research-list">
+          <li>Demonstrated that animacy consistently influences grammar across all languages covered by a fine-tuned animacy classifier (BabelNet + BERT/Aya), generalising previous findings beyond specific constructions and languages.</li>
+          <li>Performed a causal analysis of the impact of visual saliency on syntax in picture descriptions, using Vision-Language Models (VLMs) to intervene on saliency features of entities in images.</li>
+          <li>Currently investigating grammatical variations of events in English and Chinese video captions.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- PUBLICATIONS -->
+    <section id="publications">
+      <p class="section-label">Publications</p>
+      <ol class="pub-list">
+        <li class="pub-item">
+          <span class="pub-num">1.</span>
+          <span class="pub-text">
+            <strong>Gregorio, N.</strong>, Ponti, E., &amp; Goldwater, S.
+            <em>The effects of visual saliency on image descriptions by humans and AI.</em>
+            <span class="status-tag">under review</span>
+          </span>
+        </li>
+        <li class="pub-item">
+          <span class="pub-num">2.</span>
+          <span class="pub-text">
+            <strong>Gregorio, N.</strong>, Gay, M., Goldwater, S., &amp; Ponti, E. (2025).
+            <em>The cross-linguistic role of animacy in grammar structures.</em>
+            Proceedings of the 63rd Annual Meeting of the Association for Computational Linguistics (ACL 2025), 7349–7363.
+            <span class="badge">Senior Area Chair Highlight</span>
+          </span>
+        </li>
+        <li class="pub-item">
+          <span class="pub-num">3.</span>
+          <span class="pub-text">
+            Chatain, K., Spector, B., &amp; <strong>Gregorio, N.</strong> (preprint 2025).
+            <em>Existential and universal readings of pronouns across binary connectives: an experimental investigation.</em>
+          </span>
+        </li>
+      </ol>
+    </section>
+
+  </div>
+
+  <footer>
+    &copy; 2025 Nina Gregorio &nbsp;·&nbsp; University of Edinburgh
+  </footer>
+
+</body>
+</html>
