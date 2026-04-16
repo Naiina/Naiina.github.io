@@ -134,10 +134,27 @@
       color: var(--text-muted);
       line-height: 1.75;
       max-width: 520px;
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
       opacity: 0;
       animation: fadeUp 0.6s ease 0.3s forwards;
     }
+
+    .hero-email {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.35s forwards;
+    }
+
+    .hero-email a {
+      color: var(--burgundy);
+      text-decoration: none;
+      border-bottom: 0.5px solid var(--burgundy-mid);
+      transition: color 0.2s;
+    }
+
+    .hero-email a:hover { color: var(--dark); }
 
     .hero-links {
       display: flex;
@@ -157,14 +174,6 @@
       text-decoration: none;
       transition: all 0.2s;
     }
-
-    .btn-primary {
-      background: var(--burgundy);
-      color: var(--white);
-      border: 1px solid var(--burgundy);
-    }
-
-    .btn-primary:hover { background: var(--dark); border-color: var(--dark); }
 
     .btn-ghost {
       background: transparent;
@@ -212,7 +221,6 @@
       margin-bottom: 2rem;
     }
 
-   
     /* PUBLICATIONS */
     .pub-list { list-style: none; padding: 0; }
 
@@ -255,17 +263,6 @@
       white-space: nowrap;
     }
 
-    .status-tag {
-      display: inline-block;
-      font-size: 11px;
-      color: var(--text-muted);
-      border: 0.5px solid var(--border);
-      border-radius: 2px;
-      padding: 1px 7px;
-      margin-left: 4px;
-      vertical-align: middle;
-    }
-
     /* FOOTER */
     footer {
       text-align: center;
@@ -303,9 +300,8 @@
   <nav>
     <span class="nav-name">Nina Gregorio</span>
     <ul class="nav-links">
-     
       <li><a href="#publications">Publications</a></li>
-      <li><a href="mailto:your@email.ac.uk">Contact</a></li>
+      <li><a href="mailto:N.Gregorio@sms.ed.ac.uk">Contact</a></li>
     </ul>
   </nav>
 
@@ -318,29 +314,29 @@
         <h1 class="hero-name">Nina Gregorio</h1>
         <p class="hero-role">NLP &amp; Psycholinguistics · University of Edinburgh</p>
         <p class="hero-bio">
-          I study how various cognitive processes, such as visual perception or semantic accessibility shape syntactic structures in language production. 
-          Combining psycholinguistic theory with large-scale NLP methods enables us to investigate fine-grained effects in a quantitative way on typologically diverse languages.
-          
+          I study how various cognitive constraints, such as visual perception and semantic
+          accessibility, shape syntactic structures in language production. Combining
+          psycholinguistic theory with large-scale NLP methods enables me to investigate
+          fine-grained effects in a quantitative way, across typologically diverse languages.
+        </p>
+        <p class="hero-email">
+          <a href="mailto:N.Gregorio@sms.ed.ac.uk">N.Gregorio@sms.ed.ac.uk</a>
         </p>
         <div class="hero-links">
-          <a class="btn btn-primary" href="mailto:N.Gregorio@sms.ed.ac.uk">Email</a>
           <a class="btn btn-ghost" href="https://scholar.google.com/citations?user=9srYu58AAAAJ&hl=en&oi=ao" target="_blank" rel="noopener">Google Scholar</a>
           <a class="btn btn-ghost" href="https://github.com/Naiina" target="_blank" rel="noopener">GitHub</a>
           <a class="btn btn-ghost" href="CV_academic-1.pdf" target="_blank" rel="noopener">CV</a>
         </div>
-      
       </div>
       <div class="avatar-wrap">
         <div class="avatar"><img src="image.png" alt="Nina Gregorio" /></div>
       </div>
     </div>
 
-
     <!-- PUBLICATIONS -->
     <section id="publications">
       <p class="section-label">Publications</p>
       <ol class="pub-list">
-        
         <li class="pub-item">
           <span class="pub-num">1.</span>
           <span class="pub-text">
